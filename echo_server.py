@@ -14,6 +14,7 @@ def main():
             conn, addr = s.accept()
             print("Connected by", addr)
             full_data = conn.recv(BUFFER_SIZE)
+            print(full_data)
             time.sleep(0.5)
             conn.sendall(full_data)
             conn.close()

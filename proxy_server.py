@@ -30,3 +30,13 @@ def main():
                 proxy_end.connect((remote_ip,port))
                 send_full_data = conn.recv(BUFFER_SIZE)
                 #print
+                proxy_end.sendall(send_full_data)
+                proxy_end.shutdown(socket.SHUT_WR)
+
+                data = proxy_end.recv(BUFFER_SIZE)
+                #print
+                conn.send(data)
+            conn.close()
+
+if __name__ == "__main__":
+    main()
